@@ -5,6 +5,7 @@ int DIN = 12;
 int CS =  11;
 int CLK = 10;
 byte displayImage[8]=     {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+// considering a 2d co-ordinate system with origin (0,0) at bottom left corner
 int ballX=3; //X position
 int ballY=7; //Y position - top
 int SpeedX=0; // no X movement, can be -1, 0 or 1
@@ -55,8 +56,8 @@ void loop(){
 
 addPixel(int xVal, int yVal){
     int newRowval = 2^(7-xVal);
-    int rowVal = displayImage[7-y];
-    displayImage[7-y] = rowVal || newRowval;    // inserting a 1 at the required pixel
+    int rowVal = displayImage[7-yVal];
+    displayImage[7-yVal] = rowVal || newRowval;    // inserting a 1 at the required pixel
 } 
 
 void renderByte(byte image [])
